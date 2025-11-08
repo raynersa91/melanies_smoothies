@@ -18,6 +18,11 @@ session = cnx.session()
 my_dataframe = session.table("SMOOTHIES.PUBLIC.FRUIT_OPTIONS").select(col('FRUIT_NAME'),col('SEARCH_ON')).to_pandas()
 #st.dataframe(data=my_dataframe, use_container_width=True)
 
+# Lista para exibição (FRUIT_NAME) e dicionário para mapeamento
+fruit_display_list = my_dataframe['FRUIT_NAME'].tolist()
+fruit_map = dict(zip(my_dataframe['FRUIT_NAME'], my_dataframe['SEARCH_ON']))
+
+
 ingredients_list = st.multiselect(
     'choose up to 5 ingredients:'
     , my_dataframe
