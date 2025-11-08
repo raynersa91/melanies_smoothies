@@ -37,14 +37,8 @@ if ingredients_list:
         st.write(f'The search value for {fruit_chosen} is {search_on}.')
 
         st.subheader(f"{fruit_chosen} Nutrition Information")
-        try:
-            response = requests.get(f"https://my.smoothiefroot.com/api/fruit/{search_on}")
-            if response.status_code == 200:
-                st.dataframe(data=response.json(), use_container_width=True)
-            else:
-                st.error(f"Failed to fetch data for {fruit_chosen}.")
-        except Exception as e:
-            st.error(f"Error fetching data for {fruit_chosen}: {e}")
+        smoothiefroot_response = requests.get(f"https://my.smoothiefroot.com/api/fruit/{search_on}")
+
 
     # Insert order into database
     if name_on_order:
